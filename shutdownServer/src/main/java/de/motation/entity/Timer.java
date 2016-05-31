@@ -5,7 +5,7 @@ package de.motation.entity;
  */
 public class Timer {
     private long startTime;
-    private int shutdownInSecs;
+    private long shutdownInSecs;
     private Timer timer;
 
 
@@ -17,7 +17,7 @@ public class Timer {
         return startTime;
     }
 
-    public int getShutdownInSecs() {
+    public long getShutdownInSecs() {
         return shutdownInSecs;
     }
 
@@ -33,7 +33,7 @@ public class Timer {
             this.timer = new Timer();
         }
 
-        public TimerBuilder withShudownInSeconds(int seconds) {
+        public TimerBuilder withShudownInSeconds(long seconds) {
             this.timer.shutdownInSecs = seconds;
             return this;
         }

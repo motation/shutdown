@@ -21,6 +21,9 @@ public class ShutdownService {
     }
 
     public void cancelCountdown() {
+        if (countdown == null) {
+            return;
+        }
         this.countdown.interrupt();
         this.countdown = null;
         System.out.println("thread will be interrupted!");
