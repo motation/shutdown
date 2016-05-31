@@ -1,1 +1,1 @@
-# shutdown
+# shutdown server and client
