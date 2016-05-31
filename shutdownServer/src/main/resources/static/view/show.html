@@ -1,0 +1,13 @@
+<div class="panel panel-primary" style="margin: 20px;">
+    <div class="panel-heading">Shutdown</div>
+    <div class="panel-body">
+        <label ng-init="getTimer()">
+            {{timer}}
+        </label>
+        <form>
+            <div class="form-group">
+                <button type="submit" ng-click="sendCancel()" class="btn btn-default">Abbrechen</button>
+            </div>
+        </form>
+    </div>
+</div>
