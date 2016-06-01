@@ -1,3 +1,7 @@
+var serverHost = "http://"+window.location.host;
+var suffix = "/timer";
+
+
 var app = angular.module('app', ['ngRoute', 'ngResource']);
 app.config(function ($routeProvider) {
     $routeProvider

@@ -1,5 +1,3 @@
-var serverHost = "http://192.168.178.36:8080";
-var suffix = "/timer";
 app.controller('shutdownController', function ($scope, $http, $location) {
 
 
