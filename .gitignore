@@ -12,6 +12,7 @@
 */workspace.xml
 */.idea/*
 *.iml
+*/target
 
 # Sensitive or high-churn files:
 .idea/dataSources.ids
