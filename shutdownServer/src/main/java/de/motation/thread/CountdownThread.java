@@ -15,7 +15,13 @@ public class CountdownThread extends Thread {
     public void run() {
         while (!this.isInterrupted()) {
             long start = timer.getStartTime();
-            long shutdownTime = start + timer.getShutdownInSecs() * 1000;
+			long shutdownInMilliSecs = timer.getShutdownInSecs() * 1000;
+            long shutdownTime = start + shutdownInMilliSecs;
+			try{
+				Thread.sleep(shutdownInMilliSecs);
+			} catch(Exception e){
+				System.out.println("Problem while Thread sleep.");
+			}
             if (shutdownTime <= System.currentTimeMillis()) {
                 shutdown();
                 this.interrupt();
@@ -25,7 +31,7 @@ public class CountdownThread extends Thread {
 
     private void shutdown() {
         System.out.println("SHUTDOWN NOW!!!!");
-        String shutdownCmd = "shutdown -s -f";
+        String shutdownCmd = "shutdown -s -f -t 1";
         try {
             Process child = Runtime.getRuntime().exec(shutdownCmd);
         } catch (IOException e) {
