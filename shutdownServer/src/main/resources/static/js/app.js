@@ -1,3 +1,4 @@
+// get the host
 var serverHost = "http://"+window.location.host;
 var suffix = "/timer";
 
