@@ -26,7 +26,5 @@ public class ShutdownService {
         }
         this.countdown.interrupt();
         this.countdown = null;
-        System.out.println("thread will be interrupted!");
-        System.out.println(countdown);
     }
 }

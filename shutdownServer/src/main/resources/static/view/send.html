@@ -1,11 +1,24 @@
 <div class="panel panel-primary" style="margin: 20px;">
-    <div class="panel-heading">Shutdown</div>
+    <div class="panel-heading">Shutdown in seconds</div>
     <div class="panel-body">
         <form>
             <div class="form-group">
                 <label for="usr">Zeit:</label>
                 <input type="text" ng-model="time" placeholder="time in secs" class="form-control" id="usr">
                 <button type="submit" class="btn btn-default" ng-click="sendPost(time)">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-primary" style="margin: 20px;">
+    <div class="panel-heading">Shutdown in Minutes</div>
+    <div class="panel-body">
+        <form>
+            <div class="form-group">
+                <button type="button" ng-click="sendPost(1800)" class="btn btn-primary btn-md">30</button>
+                <button type="button" ng-click="sendPost(3600)" class="btn btn-primary btn-md">60</button>
+                <button type="button" ng-click="sendPost(5400)" class="btn btn-primary btn-md">90</button>
             </div>
         </form>
     </div>

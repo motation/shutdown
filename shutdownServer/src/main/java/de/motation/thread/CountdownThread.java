@@ -9,33 +9,33 @@ import java.io.IOException;
  */
 public class CountdownThread extends Thread {
 
+    public static final String SHUTDOWN_CMD = "shutdown -s -f -t 1";
     private Timer timer;
 
     @Override
     public void run() {
+        long start = timer.getStartTime();
+        long shutdownInMilliSecs = timer.getShutdownInSecs() * 1000;
+        long shutdownTime = start + shutdownInMilliSecs;
+
         while (!this.isInterrupted()) {
-            long start = timer.getStartTime();
-			long shutdownInMilliSecs = timer.getShutdownInSecs() * 1000;
-            long shutdownTime = start + shutdownInMilliSecs;
-			try{
-				Thread.sleep(shutdownInMilliSecs);
-			} catch(Exception e){
-				System.out.println("Problem while Thread sleep.");
-			}
+            try {
+                Thread.sleep(shutdownInMilliSecs);
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
             if (shutdownTime <= System.currentTimeMillis()) {
                 shutdown();
-                this.interrupt();
+                interrupt();
             }
         }
     }
 
     private void shutdown() {
-        System.out.println("SHUTDOWN NOW!!!!");
-        String shutdownCmd = "shutdown -s -f -t 1";
         try {
-            Process child = Runtime.getRuntime().exec(shutdownCmd);
+            Runtime.getRuntime().exec(SHUTDOWN_CMD);
         } catch (IOException e) {
-            System.out.println("Shutdown failed");
+            System.out.println(e.getMessage());
         }
     }
 
