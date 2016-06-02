@@ -22,9 +22,9 @@ public class CountdownThread extends Thread {
             try {
                 Thread.sleep(shutdownInMilliSecs);
             } catch (InterruptedException e) {
-                System.out.println(e.getMessage());
+                interrupt();
             }
-            if (shutdownTime <= System.currentTimeMillis()) {
+            if (!isInterrupted() && shutdownTime <= System.currentTimeMillis()) {
                 shutdown();
                 interrupt();
             }
