@@ -1,2 +1,6 @@
 server:
   port: 80
+
+videoservice:
+  vlcdir: C:\Program Files (x86)\VideoLAN\VLC\vlc.exe
+  downloadsdir: D:\Users\sparky\Downloads

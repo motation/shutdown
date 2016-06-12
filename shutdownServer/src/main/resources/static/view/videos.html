@@ -1,0 +1,19 @@
+<div class="panel panel-primary" style="margin: 20px;">
+    <div class="panel-heading">Shutdown</div>
+    <div class="panel-body" ng-init="fetchVideos()">
+        <form>
+            <div class="form-group">
+                <div ng-repeat="video in videos">
+                    <button type="submit" ng-click="togglePanel(video)" class="btn btn-default">{{video.name}}</button><br/>
+                    <div class="panel panel-default">
+                        <div class="panel-body" ng-show="video.show==true">
+                            {{video.absPathVideo}}<br/>
+                            <button type="submit" class="btn btn-default">playlist add</button><br/>
+                            <button type="submit" class="btn btn-default" ng-click="play(video)">play</button><br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

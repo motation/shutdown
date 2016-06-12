@@ -18,6 +18,10 @@ app.config(function ($routeProvider) {
             templateUrl: '/view/home.html',
             controller: 'homeController'
         })
+        .when('/videos', {
+            templateUrl: '/view/videos.html',
+            controller: 'videosController'
+        })
         .otherwise(
             {redirectTo: '/'}
         );

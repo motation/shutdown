@@ -85,3 +85,49 @@ app.controller('navController', function ($scope, $location) {
         return viewLocation === $location.path();
     };
 });
+
+
+app.controller('videosController', function ($scope, $location, $http) {
+    $scope.fetchVideos = function(){
+        $http.get(serverHost + "/file")
+            .success(function (data, status, headers, config) {
+                // success callback
+                console.log("success fetchVideos");
+                $scope.videos = data;
+            }).error(function (data, status, headers, config) {
+                // failure callback
+                console.log("failure fetchVideos");
+            });
+    }
+
+    $scope.togglePanel = function(video){
+        var videos = $scope.videos;
+        for(var i=0;i<videos.length;i++){
+            var vid = videos[i];
+            if(vid.name == video.name){
+                if(vid.show){
+                    vid.show = !video.show;
+                } else {
+                    vid.show = true;
+                }
+            }
+        }
+    }
+
+    $scope.play = function(video){
+        var config = {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        }
+
+        $http.post(serverHost + "/file/play", "filename=" + video.name, config)
+            .then(function (response) {
+                // success callback
+            },
+            function (response) {
+                // failure callback
+            });
+    }
+
+});
