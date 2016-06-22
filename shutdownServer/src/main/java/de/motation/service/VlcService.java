@@ -25,8 +25,15 @@ public class VlcService {
         String quotationMark = "\"";
         String whitespace = " ";
         String fullscreen = "--fullscreen";
+        String webControl = "-I http";
+        String remoteControl = "--rc-host=localhost:4444";
+        String webAdr = "--http-host=localhost";
+        String webPort = "--http-port=81";
+        String webPass = "--http-password=123";
         String command = quotationMark + pathVideoService.getVlcdir() + quotationMark + whitespace +
-                fullscreen + whitespace + quotationMark + selectedVideoFile.getAbsPathVideo() + quotationMark;
+                webControl + whitespace + webAdr + whitespace + webAdr + whitespace +
+                webPort + whitespace + webPass + whitespace + quotationMark +
+                selectedVideoFile.getAbsPathVideo() + quotationMark;
         Process proc = Runtime.getRuntime().exec(command);
         this.activeProc = proc;
     }
